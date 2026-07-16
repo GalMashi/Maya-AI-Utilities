@@ -5,6 +5,34 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Employee Workday Calculator</title>
 <style>
+     .home-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid currentColor;
+  border-radius: 10px;
+  color: inherit;
+  background: transparent;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.home-button:hover {
+  background: rgba(127, 127, 127, 0.15);
+  transform: translateY(-1px);
+}
+
+.home-button:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
+}
 *{box-sizing:border-box} :root{--bg:#f3f5f8;--card:#fff;--text:#172033;--muted:#667085;--line:#d9e0e8;--blue:#2457d6;--blue2:#173fa7;--work:#eaf2ff;--holiday:#ffe9e5;--short:#fff4cc;--weekend:#f0f2f5;--excluded:#f3e8ff;--shadow:0 8px 26px rgba(16,24,40,.07)}
 html{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}body{margin:0}.wrap{width:min(1180px,calc(100% - 24px));margin:auto;padding:32px 0}.top,.section-head{display:flex;justify-content:space-between;align-items:center;gap:18px}.eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--blue);margin:0 0 8px}h1{font-size:clamp(30px,5vw,52px);letter-spacing:-.04em;margin:0 0 10px}h2{margin:0;font-size:22px}.subtitle,.help,.status,footer{color:var(--muted)}.subtitle{margin:0;line-height:1.5}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:22px;margin-top:22px}.controls{display:grid;grid-template-columns:1.3fr 1fr .75fr 1.35fr auto;gap:14px;align-items:end}.field{display:flex;flex-direction:column;gap:7px}.field label{font-size:13px;font-weight:700}.field input,.field select{width:100%;height:44px;border:1px solid var(--line);border-radius:10px;padding:0 12px;background:#fff;color:var(--text);font-size:15px}.field input:focus,.field select:focus{outline:3px solid rgba(36,87,214,.15);border-color:var(--blue)}.check{min-height:44px;display:flex;align-items:center;gap:8px}.check input{width:18px;height:18px;accent-color:var(--blue)}button{font:inherit}.btn{height:44px;padding:0 16px;border-radius:10px;font-weight:700;cursor:pointer}.primary{border:0;background:var(--blue);color:#fff}.primary:hover{background:var(--blue2)}.secondary{border:1px solid var(--line);background:#fff;color:var(--text)}.schedule{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}.schedule div{background:#172033;color:#fff;border-radius:12px;padding:15px;display:flex;flex-direction:column;gap:5px}.schedule small{color:#cbd2dd}.summary{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:22px}.metric{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:20px}.metric span{display:block;color:var(--muted);font-size:12px;margin-bottom:10px}.metric strong{font-size:30px}.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted)}.legend span{display:flex;align-items:center;gap:6px}.dot{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid rgba(0,0,0,.08)}.dot.work{background:var(--work)}.dot.holiday{background:var(--holiday)}.dot.short{background:var(--short)}.dot.weekend{background:var(--weekend)}.dot.excluded{background:var(--excluded)}.status{min-height:20px;margin:14px 0 6px;font-size:13px}.status.error{color:#b42318}.calendar-scroll,.table-wrap{overflow-x:auto}.calendar{min-width:760px;display:grid;grid-template-columns:repeat(7,1fr)}.weekdays div{text-align:center;padding:12px 6px;color:var(--muted);font-size:12px;font-weight:700}.days{border-top:1px solid var(--line);border-left:1px solid var(--line)}.day{min-height:114px;padding:10px;border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);text-align:left;background:#fff;color:var(--text)}button.day{cursor:pointer}.day:hover{box-shadow:inset 0 0 0 2px var(--blue)}.day.empty{background:#fafbfc}.day.work{background:var(--work)}.day.holiday{background:var(--holiday)}.day.short{background:var(--short)}.day.weekend{background:var(--weekend)}.day.excluded{background:var(--excluded)}.day.manual-normal{background:#dff4e7}.day.manual-holiday{background:#ffd9d2}.day.manual-half{background:#ffe9a8}.day .manual-badge{display:inline-block;margin-top:7px;padding:3px 6px;border-radius:999px;background:rgba(255,255,255,.82);font-size:10px;font-weight:700}.date{font-weight:700}.hours{display:block;margin-top:19px;font-size:13px;font-weight:700}.note{display:block;margin-top:6px;font-size:11px;color:var(--muted);line-height:1.35}.help{font-size:12px;margin:12px 0 0}table{width:100%;min-width:740px;border-collapse:collapse;margin-top:16px}th,td{padding:12px;border-bottom:1px solid var(--line);text-align:left;font-size:13px}th{text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-size:11px}.num{text-align:right;font-variant-numeric:tabular-nums}.pill{display:inline-flex;padding:5px 8px;border-radius:999px;font-size:11px;font-weight:700}.pill.work{background:var(--work);color:#174ea6}.pill.holiday{background:var(--holiday);color:#b42318}.pill.short{background:var(--short);color:#775d00}.pill.weekend{background:var(--weekend);color:#475467}.pill.excluded{background:var(--excluded);color:#6941c6}.pill.manual-normal{background:#dff4e7;color:#166534}.pill.manual-holiday{background:#ffd9d2;color:#9f1c12}.pill.manual-half{background:#ffe9a8;color:#684f00}tfoot td{font-weight:700;border-bottom:0}footer{font-size:12px;line-height:1.5;padding:18px 4px 0}
 @media(max-width:950px){.controls{grid-template-columns:1fr 1fr}.controls .primary{grid-column:1/-1}.summary{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.wrap{padding-top:20px}.top,.section-head{align-items:flex-start;flex-direction:column}.controls,.summary{grid-template-columns:1fr}.schedule{grid-template-columns:1fr 1fr}.card{padding:16px}}@media print{body{background:#fff}.wrap{width:100%;padding:0}.controls,#printBtn,#csvBtn,.help,footer{display:none!important}.card,.metric{box-shadow:none}}
