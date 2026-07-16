@@ -109,10 +109,32 @@
     @media (max-width: 620px) {
       .grid { grid-template-columns: 1fr; }
     }
+  
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: auto;
+      box-sizing: border-box;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: #334155;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .back-link:hover {
+      filter: brightness(1.08);
+    }
+
   </style>
 </head>
 <body>
   <main class="card">
+    <a class="back-link" href="../">חזרה לעמוד הראשי</a>
     <h1>מחשבון חלוקת חשבון מים</h1>
     <p class="subtitle">
       חישוב תשלום יחסי לשוכר לפי מספר ימי שהייה מעבר, עם הקצאה בסיסית של 7 מ"ק לאדם לכל 60 יום. שימוש מעבר להקצאה מחויב בתעריף גבוה יותר.
