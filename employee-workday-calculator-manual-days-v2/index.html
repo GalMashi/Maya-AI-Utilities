@@ -5,45 +5,16 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Employee Workday Calculator</title>
 <style>
-     .home-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-bottom: 1rem;
-  padding: 0.65rem 1rem;
-  border: 1px solid currentColor;
-  border-radius: 10px;
-  color: inherit;
-  background: transparent;
-  font-size: 0.95rem;
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-  transition:
-    background-color 0.2s ease,
-    transform 0.2s ease;
-}
-
-.home-button:hover {
-  background: rgba(127, 127, 127, 0.15);
-  transform: translateY(-1px);
-}
-
-.home-button:focus-visible {
-  outline: 3px solid currentColor;
-  outline-offset: 3px;
-}
 *{box-sizing:border-box} :root{--bg:#f3f5f8;--card:#fff;--text:#172033;--muted:#667085;--line:#d9e0e8;--blue:#2457d6;--blue2:#173fa7;--work:#eaf2ff;--holiday:#ffe9e5;--short:#fff4cc;--weekend:#f0f2f5;--excluded:#f3e8ff;--shadow:0 8px 26px rgba(16,24,40,.07)}
 html{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}body{margin:0}.wrap{width:min(1180px,calc(100% - 24px));margin:auto;padding:32px 0}.top,.section-head{display:flex;justify-content:space-between;align-items:center;gap:18px}.eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--blue);margin:0 0 8px}h1{font-size:clamp(30px,5vw,52px);letter-spacing:-.04em;margin:0 0 10px}h2{margin:0;font-size:22px}.subtitle,.help,.status,footer{color:var(--muted)}.subtitle{margin:0;line-height:1.5}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:22px;margin-top:22px}.controls{display:grid;grid-template-columns:1.3fr 1fr .75fr 1.35fr auto;gap:14px;align-items:end}.field{display:flex;flex-direction:column;gap:7px}.field label{font-size:13px;font-weight:700}.field input,.field select{width:100%;height:44px;border:1px solid var(--line);border-radius:10px;padding:0 12px;background:#fff;color:var(--text);font-size:15px}.field input:focus,.field select:focus{outline:3px solid rgba(36,87,214,.15);border-color:var(--blue)}.check{min-height:44px;display:flex;align-items:center;gap:8px}.check input{width:18px;height:18px;accent-color:var(--blue)}button{font:inherit}.btn{height:44px;padding:0 16px;border-radius:10px;font-weight:700;cursor:pointer}.primary{border:0;background:var(--blue);color:#fff}.primary:hover{background:var(--blue2)}.secondary{border:1px solid var(--line);background:#fff;color:var(--text)}.schedule{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}.schedule div{background:#172033;color:#fff;border-radius:12px;padding:15px;display:flex;flex-direction:column;gap:5px}.schedule small{color:#cbd2dd}.summary{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:22px}.metric{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:20px}.metric span{display:block;color:var(--muted);font-size:12px;margin-bottom:10px}.metric strong{font-size:30px}.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted)}.legend span{display:flex;align-items:center;gap:6px}.dot{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid rgba(0,0,0,.08)}.dot.work{background:var(--work)}.dot.holiday{background:var(--holiday)}.dot.short{background:var(--short)}.dot.weekend{background:var(--weekend)}.dot.excluded{background:var(--excluded)}.status{min-height:20px;margin:14px 0 6px;font-size:13px}.status.error{color:#b42318}.calendar-scroll,.table-wrap{overflow-x:auto}.calendar{min-width:760px;display:grid;grid-template-columns:repeat(7,1fr)}.weekdays div{text-align:center;padding:12px 6px;color:var(--muted);font-size:12px;font-weight:700}.days{border-top:1px solid var(--line);border-left:1px solid var(--line)}.day{min-height:114px;padding:10px;border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);text-align:left;background:#fff;color:var(--text)}button.day{cursor:pointer}.day:hover{box-shadow:inset 0 0 0 2px var(--blue)}.day.empty{background:#fafbfc}.day.work{background:var(--work)}.day.holiday{background:var(--holiday)}.day.short{background:var(--short)}.day.weekend{background:var(--weekend)}.day.excluded{background:var(--excluded)}.day.manual-normal{background:#dff4e7}.day.manual-holiday{background:#ffd9d2}.day.manual-half{background:#ffe9a8}.day .manual-badge{display:inline-block;margin-top:7px;padding:3px 6px;border-radius:999px;background:rgba(255,255,255,.82);font-size:10px;font-weight:700}.date{font-weight:700}.hours{display:block;margin-top:19px;font-size:13px;font-weight:700}.note{display:block;margin-top:6px;font-size:11px;color:var(--muted);line-height:1.35}.help{font-size:12px;margin:12px 0 0}table{width:100%;min-width:740px;border-collapse:collapse;margin-top:16px}th,td{padding:12px;border-bottom:1px solid var(--line);text-align:left;font-size:13px}th{text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-size:11px}.num{text-align:right;font-variant-numeric:tabular-nums}.pill{display:inline-flex;padding:5px 8px;border-radius:999px;font-size:11px;font-weight:700}.pill.work{background:var(--work);color:#174ea6}.pill.holiday{background:var(--holiday);color:#b42318}.pill.short{background:var(--short);color:#775d00}.pill.weekend{background:var(--weekend);color:#475467}.pill.excluded{background:var(--excluded);color:#6941c6}.pill.manual-normal{background:#dff4e7;color:#166534}.pill.manual-holiday{background:#ffd9d2;color:#9f1c12}.pill.manual-half{background:#ffe9a8;color:#684f00}tfoot td{font-weight:700;border-bottom:0}footer{font-size:12px;line-height:1.5;padding:18px 4px 0}
 @media(max-width:950px){.controls{grid-template-columns:1fr 1fr}.controls .primary{grid-column:1/-1}.summary{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.wrap{padding-top:20px}.top,.section-head{align-items:flex-start;flex-direction:column}.controls,.summary{grid-template-columns:1fr}.schedule{grid-template-columns:1fr 1fr}.card{padding:16px}}@media print{body{background:#fff}.wrap{width:100%;padding:0}.controls,#printBtn,#csvBtn,.help,footer{display:none!important}.card,.metric{box-shadow:none}}
+.header-actions{display:flex;gap:10px;flex-wrap:wrap}.back-link{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
+@media print{.back-link{display:none!important}}
 </style>
 </head>
 <body>
-     <a href="../" class="home-button" aria-label="Back to utilities">
-  ← Back to Utilities
-</a>
 <main class="wrap">
-<header class="top"><div><p class="eyebrow">MONTHLY ATTENDANCE TOOL</p><h1>Employee Workday Calculator</h1><p class="subtitle">Monthly workday and hour calculation for a Sunday–Thursday schedule.</p></div><button id="printBtn" class="btn secondary">Print / Save PDF</button></header>
+<header class="top"><div><p class="eyebrow">MONTHLY ATTENDANCE TOOL</p><h1>Employee Workday Calculator</h1><p class="subtitle">Monthly workday and hour calculation for a Sunday–Thursday schedule.</p></div><div class="header-actions"><a id="backBtn" href="../" class="btn secondary back-link" aria-label="Back to landing page">← Back to landing page</a><button id="printBtn" class="btn secondary">Print / Save PDF</button></div></header>
 <section class="card controls">
 <div class="field"><label for="employeeName">Employee name</label><input id="employeeName" type="text" placeholder="Optional"></div>
 <div class="field"><label for="monthSelect">Month</label><select id="monthSelect"><option value="0">January</option><option value="1">February</option><option value="2">March</option><option value="3">April</option><option value="4">May</option><option value="5">June</option><option value="6">July</option><option value="7">August</option><option value="8">September</option><option value="9">October</option><option value="10">November</option><option value="11">December</option></select></div>
@@ -55,7 +26,7 @@ html{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--tex
 <section class="summary"><article class="metric"><span>Counted workdays</span><strong id="workdayTotal">0</strong></article><article class="metric"><span>Total hours</span><strong id="hoursTotal">0</strong></article><article class="metric"><span>Full holidays excluded</span><strong id="holidayTotal">0</strong></article><article class="metric"><span>Short days</span><strong id="shortDayTotal">0</strong></article><article class="metric"><span>Average hours / day</span><strong id="averageTotal">0</strong></article></section>
 <section class="card"><div class="section-head"><div><p class="eyebrow">CALENDAR</p><h2 id="calendarTitle"></h2></div><div class="legend"><span><i class="dot work"></i>Workday</span><span><i class="dot short"></i>Holiday eve / Chol HaMoed</span><span><i class="dot holiday"></i>Holiday</span><span><i class="dot weekend"></i>Weekend</span><span><i class="dot excluded"></i>Excluded</span><span><i class="dot work"></i>Manual normal day</span><span><i class="dot holiday"></i>Manual holiday</span><span><i class="dot short"></i>Manual half-day</span></div></div><p id="statusMessage" class="status"></p><div class="calendar-scroll"><div class="calendar weekdays"><div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div></div><div id="calendarGrid" class="calendar days"></div></div><p class="help"><strong>Manual override:</strong> click any date repeatedly to cycle through Default → Normal day → Half-day (08:30–13:00) → Holiday (0 hours) → Default. This works on weekdays and weekends.</p></section>
 <section class="card"><div class="section-head"><div><p class="eyebrow">BREAKDOWN</p><h2>Daily calculation</h2></div><button id="csvBtn" class="btn secondary">Export CSV</button></div><div class="table-wrap"><table><thead><tr><th>Date</th><th>Day</th><th>Schedule</th><th>Status</th><th class="num">Hours</th></tr></thead><tbody id="breakdownBody"></tbody><tfoot><tr><td colspan="4">Monthly total</td><td id="tableHoursTotal" class="num">0</td></tr></tfoot></table></div></section>
-<footer>Rules used: full holidays are not counted as workdays; holiday eves and Chol HaMoed are counted as 08:30–13:00 (4.5 hours). Manual overrides take priority over live calendar rules.</footer>
+<footer>Rules used: statutory full holidays and Israel Independence Day are not counted as workdays. IDF Memorial Day and holiday eves are treated as 08:30–13:00 (4.5 hours). Chol HaMoed is half of the weekday’s normal hours. Holocaust Remembrance Day and Jerusalem Day remain normal workdays. Manual overrides take priority.</footer>
 </main>
 <script>
 const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -67,13 +38,76 @@ const el={month:$('#monthSelect'),year:$('#yearInput'),toggle:$('#holidayToggle'
 const state={year:new Date().getFullYear(),month:new Date().getMonth(),events:new Map(),manual:new Map(),rows:[]};
 
 function iso(y,m,d){return `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`}
-function classify(item){const title=(item.title||'').toLowerCase(),sub=(item.subcat||'').toLowerCase();if(sub==='cholhamoed'||title.includes('chol hamoed')||title.includes('chol ha-moed'))return 'short';if(sub==='erev'||title.startsWith('erev '))return 'short';return 'holiday'}
-async function getEvents(y,m){const u=new URL('https://www.hebcal.com/hebcal');Object.entries({v:'1',cfg:'json',year:y,month:m+1,maj:'on',min:'off',mod:'off',nx:'off',i:'on',lg:'en'}).forEach(([k,v])=>u.searchParams.set(k,v));const r=await fetch(u);if(!r.ok)throw new Error('Holiday service error '+r.status);const data=await r.json(),map=new Map();for(const item of data.items||[]){if(item.category!=='holiday')continue;const date=item.date.slice(0,10),type=classify(item);if(!map.has(date))map.set(date,[]);map.get(date).push({title:item.title||'Holiday',type})}return map}
-function eventFor(date){const items=state.events.get(date)||[];if(items.some(x=>x.type==='holiday'))return {type:'holiday',names:items.map(x=>x.title)};if(items.some(x=>x.type==='short'))return {type:'short',names:items.map(x=>x.title)};return {type:null,names:[]}}
+function normalizeHolidayText(value){
+ return String(value||'')
+   .normalize('NFKD')
+   .replace(/[\u2018\u2019\u201A\u201B\u2032\u2035'"]/g,'')
+   .replace(/[^a-zA-Z0-9]+/g,' ')
+   .trim()
+   .toLowerCase()
+}
+function classify(item){
+ const rawTitle=String(item.title||'');
+ const title=normalizeHolidayText(rawTitle);
+ const sub=normalizeHolidayText(item.subcat||'');
+
+ if(title.includes('yom haatzmaut')||title.includes('independence day'))return 'holiday';
+ if(title.includes('yom hazikaron')||title.includes('memorial day'))return 'memorial-short';
+ if(title.includes('yom hashoah')||title.includes('holocaust memorial'))return 'ignore';
+ if(title.includes('yom yerushalayim')||title.includes('jerusalem day'))return 'ignore';
+
+ if(sub==='erev'||title.startsWith('erev '))return 'short';
+
+ const compact=title.replace(/\s+/g,'');
+ if(sub==='cholhamoed'||title.includes('chol hamoed')||title.includes('chol ha moed')||compact.includes('chm'))return 'short';
+
+ if(item.yomtov===true||sub==='major')return 'holiday';
+
+ return 'ignore'
+}
+async function getEvents(y,m){
+ const u=new URL('https://www.hebcal.com/hebcal');
+ Object.entries({v:'1',cfg:'json',year:y,month:m+1,maj:'on',min:'off',mod:'on',nx:'off',i:'on',lg:'en'}).forEach(([k,v])=>u.searchParams.set(k,v));
+ const r=await fetch(u);
+ if(!r.ok)throw new Error('Holiday service error '+r.status);
+ const data=await r.json(),map=new Map();
+ for(const item of data.items||[]){
+   if(item.category!=='holiday')continue;
+   const type=classify(item);
+   if(type==='ignore')continue;
+   const date=item.date.slice(0,10);
+   if(!map.has(date))map.set(date,[]);
+   map.get(date).push({title:item.title||'Holiday',type})
+ }
+ return map
+}
+function eventFor(date){
+ const items=state.events.get(date)||[];
+ if(items.some(x=>x.type==='holiday'))return {type:'holiday',names:items.map(x=>x.title)};
+ if(items.some(x=>x.type==='memorial-short'))return {type:'memorial-short',names:items.map(x=>x.title)};
+ if(items.some(x=>x.type==='short'))return {type:'short',names:items.map(x=>x.title)};
+ return {type:null,names:[]}
+}
 
 async function calculate(){const y=Number(el.year.value),m=Number(el.month.value);if(!Number.isInteger(y)||y<2000||y>2100){setStatus('Enter a year between 2000 and 2100.',true);return}state.year=y;state.month=m;state.events=new Map();if(el.toggle.checked){setStatus('Loading Israeli calendar data…');try{state.events=await getEvents(y,m);setStatus('Calendar loaded. Manual day overrides take priority over live holiday data.')}catch(e){console.error(e);setStatus('Live holiday data could not be loaded. Regular weekly hours and manual overrides are still available.',true)}}else setStatus('Holiday rules are disabled. Manual overrides are still available.');rebuild()}
 
-function rebuild(){state.rows=[];const count=new Date(state.year,state.month+1,0).getDate();for(let d=1;d<=count;d++){const date=new Date(state.year,state.month,d),weekday=date.getDay(),key=iso(state.year,state.month,d),normal=NORMAL[weekday]||null,event=el.toggle.checked?eventFor(key):{type:null,names:[]},manual=state.manual.get(key)||'default';let schedule=normal,status=normal?'Workday':'Weekend',kind=normal?'work':'weekend',hours=normal?normal.hours:0,counted=!!normal;if(normal&&event.type==='holiday'){schedule=null;status='Holiday';kind='holiday';hours=0;counted=false}else if(normal&&event.type==='short'){schedule=SHORT;status=event.names.some(n=>n.toLowerCase().startsWith('erev '))?'Holiday eve':'Chol HaMoed';kind='short';hours=4.5;counted=true}if(manual==='normal'){
+function rebuild(){state.rows=[];const count=new Date(state.year,state.month+1,0).getDate();for(let d=1;d<=count;d++){const date=new Date(state.year,state.month,d),weekday=date.getDay(),key=iso(state.year,state.month,d),normal=NORMAL[weekday]||null,event=el.toggle.checked?eventFor(key):{type:null,names:[]},manual=state.manual.get(key)||'default';let schedule=normal,status=normal?'Workday':'Weekend',kind=normal?'work':'weekend',hours=normal?normal.hours:0,counted=!!normal;if(normal&&event.type==='holiday'){
+     schedule=null;status='Holiday';kind='holiday';hours=0;counted=false
+   }else if(normal&&event.type==='memorial-short'){
+     schedule=SHORT;status='IDF Memorial Day — half-day';kind='short';hours=4.5;counted=true
+   }else if(normal&&event.type==='short'){
+     const normalizedNames=event.names.map(normalizeHolidayText);
+     const isErev=normalizedNames.some(n=>n.startsWith('erev '));
+     if(isErev){
+       schedule=SHORT;status='Holiday eve';kind='short';hours=4.5;counted=true
+     }else{
+       schedule=SHORT;
+       status='Chol HaMoed (CH"M)';
+       kind='short';
+       hours=4.5;
+       counted=true
+     }
+   }if(manual==='normal'){
      if(normal){schedule=normal;status='Manual normal day';kind='manual-normal';hours=normal.hours;counted=true}
      else{schedule=null;status='Manual normal day (weekend)';kind='manual-normal';hours=0;counted=false}
    }else if(manual==='half'){
